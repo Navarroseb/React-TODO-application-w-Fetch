@@ -1,12 +1,76 @@
+body{
+    background-color: rgb(8, 8, 8);
+}
+h1 {
+    font-size: 50px;
+    font-family:  Geneva, Verdana, sans-serif;
+    color: #fff;
+	margin-top: 30%;
+	text-shadow:
+		0 0 5px rgba(0,178,255,1),
+		0 0 10px rgba(0,178,255,1),
+		0 0 20px rgba(0,178,255,1),
+		0 0 40px rgba(38,104,127,1),
+		0 0 80px rgba(38,104,127,1),
+		0 0 90px rgba(38,104,127,1),
+		0 0 100px rgba(38,104,127,1),
+		0 0 140px rgba(38,104,127,1),
+		0 0 180px rgba(38,104,127,1);
 
-/* 
+}
+.card-of-list{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 400px;
+    height: 100%;
+    background-color: rgb(122, 122, 122);
+    border-radius: 10px;
+}
+.add-todo{
+    margin: 10px;
+    padding: 10px;
+    width: 97%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+}
+.group-list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.items {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    margin: 0px 10px 10px 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: white;
+}
+.delete-item {
+    display: none;
+    position: absolute;
+    left: 58%;
+    border: none;
+    background: none;
+    color: rgb(250, 4, 4);
+    font-size: 18px;
+    
+}
+.items:hover .delete-item {
+    display: inline-block;
+    padding: 0px;
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+}
+h5 {
+    margin: 0 auto;
+    padding: 10px;
+    font-family:  Geneva, Verdana, sans-serif;
+    text-align: center;
+    color:rgb(8, 8, 8)
+}
