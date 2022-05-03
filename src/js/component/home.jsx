@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 
 const Home = () => {
 	const [newItem, setNewItem] = useState("");
-	const [todo, setTodo] = useState([]);
+	const [todos, setTodos] = useState([]);
 
 	useEffect(() => {
-		getTodo();
+		getTodos();
 	}, [newItem]);
 
-	const sendTodo = async (result) => {
+	const sendTodos = async (result) => {
 		const response = await fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/navarroseb",
 			{
-				method: "POST",
+				method: "PUT",
 				body: JSON.stringify(result),
 				headers: {
 					"Content-Type": "application/json",
@@ -22,7 +22,7 @@ const Home = () => {
 		const data = await response.json();
 		console.log(data);
 	};
-	const getTodo = async () => {
+	const getTodos = async () => {
 		const response = await fetch(
 			"https://assets.breatheco.de/apis/fake/todos/user/navarroseb",
 			{
@@ -33,13 +33,13 @@ const Home = () => {
 			}
 		);
 		const data = await response.json();
-		setTodo(data);
+		setTodos(data);
 	};
 
-	const deleteItem = (id) => {
-		const newArray = todo.filter((element, item) => item !== id);
-		setTodo(newArray);
-		sendTodo(newArray);
+	const deleteItem = (ind) => {
+		const newArray = todos.filter((element, index) => index !== ind);
+		setTodos(newArray);
+		sendTodos(newArray);
 	};
 
 	const addTodo = (e) => {
@@ -51,7 +51,7 @@ const Home = () => {
 				label: newItem,
 				done: false,
 			};
-			sendTodo([...todo, task]);
+			sendTodos([...todos, task]);
 			setNewItem("");
 		}
 	};
@@ -70,25 +70,25 @@ const Home = () => {
 					onKeyPress={(e) => addTodo(e)}
 				/>
 				<ul className="group-list">
-					{Array.isArray(todo) &&
-						todo !== undefined &&
-						todo?.map((task, i) => {
+					{Array.isArray(todos) &&
+						todos !== undefined &&
+						todos?.map((task, index) => {
 							return (
-								<li className="items" key={i}>
+								<li className="items" key={index}>
 									{task.label}
 									<button
 										className="delete-item"
 										onClick={() => {
-											deleteItem(i);
+											deleteItem(index);
 										}}>
-										<i class="fas fa-trash-alt"></i>
+										<i className="fas fa-trash-alt"></i>
 									</button>
 								</li>
 							);
 						})}
 				</ul>
 				<h5>{`${
-					Array.isArray(todo) && todo !== undefined && todo.length
+					Array.isArray(todos) && todos !== undefined && todos.length
 				} items left`}</h5>
 			</div>
 		</div>
